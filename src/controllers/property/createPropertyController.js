@@ -1,10 +1,20 @@
-export default function createPropertyController(req, res) {
+import { create, propertyValidator } from "../../models/propertyModel.js"
+
+export default async function createPropertyController(req, res) {
     const property = req.body
 
-    //TODO validar e inserir no BD
+    const {success, error, data: propertyValidated = propertyValidator(property, {id: true})
+
+    if(!succsess){
+        return res.status(400).json({
+            message: 'Erro ao cadastrar propriedade, verifique os dados!'
+            errors: error.flatten().fieldErrors
+        })
+    }
+    const result = await create(propertyValidated)
 
     return res.json({
         message: "Imovel criado com sucesso!",
-        property: property
+        property: result
     })
 }

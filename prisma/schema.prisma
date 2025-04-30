@@ -17,14 +17,14 @@ model users {
   id      Int     @id @default(autoincrement())
   name    String  @db.VarChar(255)
   email   String  @unique(map: "email") @db.VarChar(255)
-  pass String     @db.VarChar(255)
-  avatar String?  @db.VarChar(500)
+  pass    String     @db.VarChar(255)
+  avatar  String?  @db.VarChar(500)
 }
 
 model property {
   id        Int     @id @default(autoincrement())
-  type      String  @db.VarChar(10)
+  type      String  @db.VarChar(7)
   adress    String 
   rooms     Int     
-  property  String  @db.VarChar(520)
+  property  String  @db.VarChar(20)
 }

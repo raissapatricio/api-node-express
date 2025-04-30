@@ -5,11 +5,14 @@ import updatePropertyController from '../controllers/property/updatePropertyCont
 import deletePropertyController from '../controllers/property/deletePropertyController.js'
 import changeTypePropertyController from '../controllers/property/changeTypePropertyController.js'
 
+
 const router = express.Router()
 
-router.get('/', getPropertyController)
+router.use(logger)
+router.get('/list', getPropertyController)
+router,get('/:id', ()=>{}) //get de uma unica propriedade por id
 router.post('/', createPropertyController)
-router.put('/', updatePropertyController)
+router.put('/:id', updatePropertyController)
 router.delete('/:id', deletePropertyController)
 router.patch('/type', changeTypePropertyController)
 

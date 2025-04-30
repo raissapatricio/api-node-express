@@ -1,12 +1,13 @@
-export default function updatePropertyController (req, res){
+import { update } from '../../models/propertyModel.js'
+
+export default async function updatePropertyController (req, res){
+    const {id} = req.params
+    const property = req.body
+
+    const result = await update(+id, property)
+
     return res.json({
-        message: "Imovel criado com sucesso!",
-        property: {
-            id: 1,
-            tipo: "Venda",
-            endereco: "Rua Coronel Aristides, 27",
-            quartos: 3,
-            propriedade: "Casa"
-    }
+        message: "Imóvel atualizado com sucesso!",
+        property: result
     })
 }
